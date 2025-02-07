@@ -46,10 +46,10 @@ ReadWriteNode::ReadWriteNode()
 
   // ROS2 Subscriber for velocity control
   set_group_velocities_subscriber_ =
-    this->create_subscription<dynamixel_sdk_custom_interfaces::msg::SetGroupVelocities>(
+    this->create_subscription<robot_control_custom_interfaces::msg::SetGroupVelocities>(
       "set_group_velocities",
       10,
-      [this](const dynamixel_sdk_custom_interfaces::msg::SetGroupVelocities::SharedPtr msg) -> void
+      [this](const robot_control_custom_interfaces::msg::SetGroupVelocities::SharedPtr msg) -> void
       {
         for (size_t i = 0; i < msg->ids.size(); ++i) {
           auto it = std::find(motor_ids.begin(), motor_ids.end(), msg->ids[i]);
@@ -61,7 +61,7 @@ ReadWriteNode::ReadWriteNode()
       });
 
   // ROS2 Publisher for motor status
-  motor_status_publisher_ = this->create_publisher<dynamixel_sdk_custom_interfaces::msg::MotorStatus>("motor_status", 10);
+  motor_status_publisher_ = this->create_publisher<robot_control_custom_interfaces::msg::MotorStatus>("motor_status", 10);
 
   // Control loop with 10ms interval
   control_loop_timer_ = this->create_wall_timer(
@@ -130,7 +130,7 @@ void ReadWriteNode::controlLoop()
   dxl_comm_result = groupSyncRead->txRxPacket();
 
   // Publish motor status
-  auto status_msg = dynamixel_sdk_custom_interfaces::msg::MotorStatus();
+  auto status_msg = robot_control_custom_interfaces::msg::MotorStatus();
   for (uint8_t id : motor_ids) {
     int32_t velocity = groupSyncRead->getData(id, ADDR_PRESENT_VELOCITY, 4);
     status_msg.ids.push_back(id);

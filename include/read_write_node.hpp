@@ -5,8 +5,8 @@
 #include <dynamixel_sdk/dynamixel_sdk.h>
 
 // Custom message and service interfaces
-#include "dynamixel_sdk_custom_interfaces/msg/set_group_velocities.hpp"
-#include "dynamixel_sdk_custom_interfaces/msg/motor_status.hpp"
+#include "robot_control_custom_interfaces/msg/set_group_velocities.hpp"
+#include "robot_control_custom_interfaces/msg/motor_status.hpp"
 
 class ReadWriteNode : public rclcpp::Node
 {
@@ -19,8 +19,8 @@ private:
   void controlLoop();
 
   // ROS 2 Subscribers & Publishers
-  rclcpp::Subscription<dynamixel_sdk_custom_interfaces::msg::SetGroupVelocities>::SharedPtr set_group_velocities_subscriber_;
-  rclcpp::Publisher<dynamixel_sdk_custom_interfaces::msg::MotorStatus>::SharedPtr motor_status_publisher_;
+  rclcpp::Subscription<robot_control_custom_interfaces::msg::SetGroupVelocities>::SharedPtr set_group_velocities_subscriber_;
+  rclcpp::Publisher<robot_control_custom_interfaces::msg::MotorStatus>::SharedPtr motor_status_publisher_;
   rclcpp::TimerBase::SharedPtr control_loop_timer_;
 
   // Dynamixel SDK Handlers

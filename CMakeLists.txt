@@ -13,7 +13,7 @@ endif()
 # Find dependencies
 find_package(ament_cmake REQUIRED)
 find_package(dynamixel_sdk REQUIRED)
-find_package(dynamixel_sdk_custom_interfaces REQUIRED)
+find_package(robot_control_custom_interfaces REQUIRED)
 find_package(rclcpp REQUIRED)
 
 include_directories(include)
@@ -21,7 +21,7 @@ include_directories(include)
 # Build
 add_executable(read_write_node src/read_write_node.cpp)
 ament_target_dependencies(read_write_node
-  dynamixel_sdk_custom_interfaces
+  robot_control_custom_interfaces
   dynamixel_sdk
   rclcpp
 )
