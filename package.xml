@@ -4,11 +4,8 @@
   <version>3.7.60</version>
   <description>ROS2 examples using ROBOTIS DYNAMIXEL SDK</description>
   <license>MIT</license>
-  <maintainer email="willson@robotis.com">Will Son</maintainer>
-  <url type="website">http://wiki.ros.org/dynamixel_sdk</url>
-  <url type="repository">https://github.com/ROBOTIS-GIT/DynamixelSDK</url>
-  <url type="bugtracker">https://github.com/ROBOTIS-GIT/DynamixelSDK/issues</url>
-  <author email="willson@robotis.com">Will Son</author>
+  <maintainer email="vinayvp.98@gmail.com">Vinay Venkanagoud Patil</maintainer>
+  <author email="vinayvp.98@gmail.com">Vinay Venkanagoud Patil</author>
 
   <buildtool_depend>ament_cmake</buildtool_depend>
   <depend>rclcpp</depend>
